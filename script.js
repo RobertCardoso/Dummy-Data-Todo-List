@@ -13,7 +13,9 @@
         "title": "delectus aut autem",
         "completed": false
     }]
-
+    let results = []
+        
+    
     // console.log(arrayOfTodos[0].userId) // => 14
     // console.log(arrayOfTodos[1].userId) // => 20
     
@@ -90,7 +92,7 @@ const setUserId = () => {
     const userId = document.getElementById('UserID').value
     console.log("userId is: "+ userId)
 
-    let results = arrayOfTodos.filter(todo => todo.userId===parseInt(userId))
+    results = arrayOfTodos.filter(todo => todo.userId===parseInt(userId))
     console.log(results)
 
 
@@ -114,9 +116,34 @@ const completedTodos = () => {
 
 
 const setCompleted = () => {
-    const completed = document.getElementById()
-    let completedRes = results.filter(todo => todo.)
+    let completedRes = results.filter(todo => todo.completed === true )
     console.log(completedRes)
     
+    for (let i = 0; i < results.length; i++) {
+        let todoList = document.getElementById("todo-list")
+        let element = document.createElement("li")
+        let text = document.createTextNode(completedRes[i].title)
+        element.appendChild(text)
+        todoList.appendChild(element)
+    }
+
+}
+
+const notCompletedTodos = () => {
+    clearTodos()
+    setNotCompleted()
+}
+
+const setNotCompleted = () => {
+    let notCompletedRes = results.filter(todo => todo.completed === false)
+    console.log(notCompletedRes)
+
+    for (let i = 0; i < results.length; i++) {
+        let todoList = document.getElementById("todo-list")
+        let element = document.createElement("li")
+        let text = document.createTextNode(notCompletedRes[i].title)
+        element.appendChild(text)
+        todoList.appendChild(element)
+    }
 
 }
